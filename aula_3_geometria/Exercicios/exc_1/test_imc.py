@@ -1,8 +1,14 @@
 import pytest
-from imc import calcular_imc
+from imc import calc_imc
 import math
 
-def test_calcular_imc():
-    assert 24.22 == round(calcular_imc(70,1.70), 2)
-    assert calcular_imc(0,0) is None
-    assert calcular_imc(-2,-2) is None
+@pytest.mark.parametrize("peso, alt, imc", [
+    (98, 1.70, 33.91), #Obsidade II
+    (69, 1.62, 26.29), #Obsidade I
+    (200, 1.62, 76.21), #Obsidade III
+    (59, 1.62, 22.48), #Normal
+    (0, 0, None), # Falha
+    (45, 1.62, 17.15) #Magreza
+])
+def test_calc_imc(peso, alt, imc):
+    assert calc_imc(peso, alt) == pytest.approx(imc, abs=0.01)

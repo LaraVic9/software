@@ -6,10 +6,9 @@ import math
 
 #slides justpaste.it/da00f
 
-def calcular_imc(peso, alt):
-    if peso <= 0 or alt <= 0:
+def calc_imc(peso, alt):
+    if alt == 0:
         return None
-    return peso / (alt * alt)
-    
+    return round(peso / (alt ** 2), 2)
 
 

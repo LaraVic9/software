@@ -13,24 +13,26 @@
 
 #slides justpaste.it/da00f
 
-def calculo_imc(peso, alt):
+def calcula_imc(peso, alt):
+    
+    imc = peso / (alt ** 2)
     
     if alt < 0 or peso < 0:
         return None
     
-    if (peso / (alt*alt)) >= 18.50:
-       return print("Magreza")
-    #if (peso / (alt*alt)) >= 18.50 or (peso * (alt*alt)) >= 24.99:
-    #   return print("Normal")
-    #if (peso / (alt*alt)) >= 25.00 or (peso * (alt*alt)) >= 29.99:
-    #   return print("sobrepeso")
-    #if (peso / (alt*alt)) >= 30.00 or (peso * (alt*alt)) >= 34.99:
-    #    return print("Obesidade grau I")
-    # if (peso / (alt*alt)) >= 35.00 or (peso * (alt*alt)) >= 39.99:
-    #   return print("Obesidade grau II")
-    #if (peso / (alt*alt)) >= 40.00:
-    #    return print("Obesidade grau III")
-    return peso / (alt * alt)
+    if imc < 18.50:
+       return 'Magreza'
+    elif 18.50 <= imc < 24.99:
+       return 'Normal'
+    elif 25.00 <= imc < 30.00:
+       return 'Sobrepeso'
+    elif 30.00 <= imc < 35.00:
+        return 'Obesidade grau I'
+    elif 35.00 <= imc < 40.00:
+       return 'Obesidade grau II'
+    else:
+        return 'Obesidade grau III'
+    
 
 # nova funcao "classifica_imc" apenas com os IF, em vez de print "magreza" retornar como string
 # criar novo test pra classificacao "magreza" etc
