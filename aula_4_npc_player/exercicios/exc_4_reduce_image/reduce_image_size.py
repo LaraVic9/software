@@ -4,7 +4,7 @@
 import cv2
 
 # read image to be resized by imread() function of openCV library
-img = cv2.imread('input.jpg')
+img = cv2.imread('image.jpg')
 print(img.shape)
 
 # set the ratio of resized image
