@@ -17,3 +17,6 @@ def calcular_area_triangulo(alt, base):
     return (base * alt)//2
 
 # implementar: circulo, triangulo, retangulo
+
+def calc_losangulo(r):
+    print('calc')
