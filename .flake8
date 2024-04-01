@@ -1,0 +1,4 @@
+[flake8]
+
+extend-ignore = W292
+exclude = .git, __pycache__

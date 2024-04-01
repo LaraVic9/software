@@ -1,27 +1,21 @@
-#https://github.com/Python-World/python-mini-projects/tree/master/projects/Hashing_passwords
-
-# run python hashing_passwords.py <password> [-t {sha256,sha512,md5}] 
-# colocar dentro de uma funcao (talvez mais de uma, ver depois)
-
-
-
-
-# -*- cofing: utf-8 -*-
+# -*- coding: utf-8 -*-
 import argparse
 import hashlib
 
-# parsing
-parser = argparse.ArgumentParser(description='hashing given password')
-parser.add_argument('password', help='input password you want to hash')
-parser.add_argument('-t', '--type', default='sha256',choices=['sha256', 'sha512', 'md5'] )
-args = parser.parse_args() 
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Hashing given password')
+    parser.add_argument('password', help='Input password you want to hash')
+    parser.add_argument('-t', '--type', default='sha256', choices=['sha256', 'sha512', 'md5'])
+    args = parser.parse_args()
+    return args
 
-# hashing given password
-password = args.password
-hashtype = args.type
-m = getattr(hashlib,hashtype)()
-m.update(password.encode())
+def hash_password(password, hash_type):
+    m = getattr(hashlib, hash_type)()
+    m.update(password.encode())
+    return m.hexdigest()
 
-# output
-print("< hash-type : " + hashtype + " >")
-print(m.hexdigest())
+if __name__ == "__main__":
+    args = parse_arguments()
+    hashed_password = hash_password(args.password, args.type)
+    print("< hash-type : " + args.type + " >")
+    print(hashed_password)

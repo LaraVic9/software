@@ -3,3 +3,7 @@
 # pip install pytest flask
 
 # pytest -v
+
+# Projeto python
+- executar teste de cobertura de codigo - fastapi
+- executar flake8 - mini projects
