@@ -1,0 +1,45 @@
+./reduce_image_size.py:3:1: E302 expected 2 blank lines, found 1
+./reduce_image_size.py:6:1: W293 blank line contains whitespace
+./reduce_image_size.py:9:1: W293 blank line contains whitespace
+./reduce_image_size.py:10:80: E501 line too long (80 > 79 characters)
+./reduce_image_size.py:12:1: W293 blank line contains whitespace
+./reduce_image_size.py:16:1: E305 expected 2 blank lines after class or function definition, found 1
+./test_reduce_image.py:4:1: E302 expected 2 blank lines, found 1
+./test_reduce_image.py:8:1: W293 blank line contains whitespace
+./test_reduce_image.py:11:1: W293 blank line contains whitespace
+./test_reduce_image.py:12:80: E501 line too long (93 > 79 characters)
+./test_reduce_image.py:13:1: W293 blank line contains whitespace
+./test_reduce_image.py:14:80: E501 line too long (116 > 79 characters)
+./test_reduce_image.py:15:1: W293 blank line contains whitespace
+
+Vunerabilidades:
+
+E302 expected 2 blank lines, found 1
+W293 blank line contains whitespace
+E501 line too long (80 > 79 characters)
+E305 expected 2 blank lines after class or function definition, found 1
+
+Vunerabilidade mais comum: W293 blank line contains whitespace
+
+
+Sugestoes
+
+def reduce_image_size(input_image_path, output_image_path, scale_factor):
+    img = cv2.imread(input_image_path)
+    print("Original Dimensions:", img.shape)
+
+    width = int(img.shape[1] / scale_factor)
+    height = int(img.shape[0] / scale_factor)
+
+    resized_img = cv2.resize(img, (width, height), interpolation=cv2.INTER_AREA)
+    print("Resized Dimensions:", resized_img.shape)
+
+    cv2.imwrite(output_image_path, resized_img)
+    return resized_img.shape
+
+
+if __name__ == "__main__":
+    input_path = 'image.jpg'
+    output_path = 'resized_output_image.jpg'
+    scale_factor = 5
+    reduce_image_size(input_path, output_path, scale_factor)

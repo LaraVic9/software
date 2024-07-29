@@ -18,7 +18,7 @@ def generate_qr_code(url, filename="url_qrcode.png", fill_color="red", back_colo
 
     img = qr.make_image(fill_color=fill_color, back_color=back_color)
     img.save(filename)
-    return filename  # Retornando o nome do arquivo para facilitar a verificação no teste
+    return filename  
 
 if __name__ == "__main__":
     input_URL = "https://www.google.com/"

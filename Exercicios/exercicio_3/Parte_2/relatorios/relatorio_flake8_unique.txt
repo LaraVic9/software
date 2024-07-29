@@ -1,0 +1,60 @@
+./test_unique.py:2:5: E271 multiple spaces after keyword
+./test_unique.py:4:1: E302 expected 2 blank lines, found 1
+./test_unique.py:11:80: E501 line too long (115 > 79 characters)
+./unique.py:5:1: E302 expected 2 blank lines, found 1
+./unique.py:8:80: E501 line too long (94 > 79 characters)
+./unique.py:12:1: E302 expected 2 blank lines, found 1
+./unique.py:17:1: E305 expected 2 blank lines after class or function definition, found 1
+
+Vunerabilidades:
+
+E271: Multiple spaces after keyword
+E302: Expected 2 blank lines, found 1
+E501: Line too long (115 > 79 characters)
+E305: Expected 2 blank lines after class or function definition, found 1
+
+Vunerabilidade mais comum: E302 expected 2 blank lines, found 1
+
+Sugestoes
+
+unique.test
+
+import pytest
+from unique import hash_password
+
+@pytest.mark.parametrize("password, hash_type, expected_start", [
+    ("password123", "sha256", "ef92b"),
+    ("password123", "sha512", "b109f"),
+    ("password123", "md5", "482c8"),
+])
+def test_hash_password(password, hash_type, expected_start):
+    hashed = hash_password(password, hash_type)
+    assert hashed.startswith(expected_start), (
+        f"Hashed password for {hash_type} does not start with {expected_start}. "
+        f"Actual value: {hashed}"
+    )
+
+unique.py
+
+import argparse
+import hashlib
+
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Hashing given password')
+    parser.add_argument('password', help='Input password you want to hash')
+    parser.add_argument('-t', '--type', default='sha256', choices=['sha256', 'sha512', 'md5'])
+    args = parser.parse_args()
+    return args
+
+def hash_password(password, hash_type):
+    m = getattr(hashlib, hash_type)()
+    m.update(password.encode())
+    return m.hexdigest()
+
+if __name__ == "__main__":
+    args = parse_arguments()
+    hashed_password = hash_password(args.password, args.type)
+    print("< hash-type : " + ar
+
+
+

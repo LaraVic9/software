@@ -1,0 +1,27 @@
+Name                            Stmts   Miss  Cover   Missing
+-------------------------------------------------------------
+httpx/__init__.py                  19     19     0%   1-105
+httpx/__version__.py                3      3     0%   1-3
+httpx/_api.py                      30     30     0%   1-465
+httpx/_auth.py                    169    169     0%   1-348
+httpx/_client.py                  541    541     0%   1-2066
+httpx/_config.py                  160    160     0%   1-372
+httpx/_content.py                 130    130     0%   1-238
+httpx/_decoders.py                185    185     0%   7-370
+httpx/_exceptions.py               77     77     0%   34-379
+httpx/_main.py                    169    169     0%   1-509
+httpx/_models.py                  597    597     0%   1-1211
+httpx/_multipart.py               147    147     0%   1-269
+httpx/_status_codes.py             99     99     0%   1-162
+httpx/_transports/__init__.py       6      6     0%   1-7
+httpx/_transports/asgi.py          77     77     0%   1-174
+httpx/_transports/base.py          23     23     0%   1-86
+httpx/_transports/default.py      103    103     0%   27-389
+httpx/_transports/mock.py          20     20     0%   1-43
+httpx/_transports/wsgi.py          61     61     0%   1-149
+httpx/_types.py                    31     31     0%   5-136
+httpx/_urlparse.py                179    179     0%   19-489
+httpx/_urls.py                    196    196     0%   1-645
+httpx/_utils.py                   210    210     0%   1-440
+-------------------------------------------------------------
+TOTAL                            3232   3232     0%

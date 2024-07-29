@@ -1,0 +1,57 @@
+generate_password.py e test_hashing_password.py:
+
+./generate_qrcode.py:8:1: E302 expected 2 blank lines, found 1
+./generate_qrcode.py:8:80: E501 line too long (91 > 79 characters)
+./generate_qrcode.py:21:80: E501 line too long (89 > 79 characters)
+./generate_qrcode.py:23:1: E305 expected 2 blank lines after class or function definition, found 1
+./test_generate_code.py:6:1: E302 expected 2 blank lines, found 1
+
+Vunerabilidades:
+
+E302: Esperado 2 linhas em branco, encontrado 1
+E501: Linha muito longa
+E305: Esperado 2 linhas em branco após definição de classe ou função, encontrado 1
+
+Vulnerabilidade mais comum: E302 (expected 2 blank lines, found 1) e E501 line too long.
+
+
+Sugestoes:
+
+# qr_code_generator.py
+
+import qrcode
+import argparse
+
+
+def generate_qr_code(url, filename="url_qrcode.png", fill_color="red", back_color="white"):
+    
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=15,
+        border=4,
+    )
+
+    qr.add_data(url)
+    qr.make(fit=True)
+
+    img = qr.make_image(fill_color=fill_color, back_color=back_color)
+    img.save(filename)
+    return filename  # Retornando o nome do arquivo para facilitar a verificação no teste
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Generate a QR code from a URL.')
+    parser.add_argument('url', help='The URL to encode in the QR code')
+    parser.add_argument('-f', '--filename', default='url_qrcode.png', help='The filename for the generated QR code image')
+    parser.add_argument('--fill', default='red', help='The color for the QR code')
+    parser.add_argument('--back', default='white', help='The background color for the QR code')
+
+    args = parser.parse_args()
+
+    generate_qr_code(args.url, args.filename, args.fill, args.back)
+
+
+if __name__ == "__main__":
+    main()
+

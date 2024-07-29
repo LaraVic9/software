@@ -1,0 +1,17 @@
+---------- coverage: platform linux, python 3.8.10-final-0 -----------
+Name                                                         Stmts   Miss  Cover
+--------------------------------------------------------------------------------
+aula/npc_player.py                                               6      0   100%
+aula/test_player.py                                              7      0   100%
+exercicios/exc_1_hashing_password/generate_password.py          16      8    50%
+exercicios/exc_1_hashing_password/test_hashing_password.py       8      0   100%
+exercicios/exc_2_qrcode/generate_qrcode.py                      11      2    82%
+exercicios/exc_2_qrcode/test_generate_code.py                    8      0   100%
+exercicios/exc_3_unique/test_unique.py                           6      0   100%
+exercicios/exc_3_unique/unique.py                               17      9    47%
+exercicios/exc_4_reduce_image/reduce_image_size.py              15     10    33%
+exercicios/exc_4_reduce_image/test_reduce_image.py              12      3    75%
+--------------------------------------------------------------------------------
+TOTAL                                                          106     32    70%
+
+
