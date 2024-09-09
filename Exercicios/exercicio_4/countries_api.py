@@ -15,6 +15,7 @@ country_data = {
     "CA": "Canada",
     "GB": "United Kingdom"
 }
+
 @app.route('/get_country_name', methods=['GET'])
 def get_country_name():
     iso_code = request.args.get('iso_code') # <= obrigatorio
@@ -27,15 +28,17 @@ def get_country_name():
         # teste do iso_code "ZZ" que não existe
         return jsonify({"error": "Country not found"}), 404 
 
-def get_country_name_rest():
-    """ 
-    TODO: implementar rota para fazer 
-    request para a api restcountries passando o código iso "BR"
-    e retorna o nome do país
-    - https://restcountries.com/v3.1/alpha/br
-    - retornar data['name']['common']
-    """
-    ...
+@app.route('/get_country_name_res/<iso_code>', methods=['GET'])
+def get_country_name_rest(iso_code):
+    response = requests.get(f'https://restcountries.com/v3.1/alpha/{iso_code}')
+    if response.status_code == 200:
+        data = response.json()
+        country_name = data[0]['name']['common']
+        return jsonify({'common': country_name})
+    else:
+        return jsonify({'error': 'Unable to fetch data'}), response.status_code
+
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5002)

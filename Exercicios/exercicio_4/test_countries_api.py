@@ -1,9 +1,8 @@
 
-import pytest
 import json
 from flask import Flask
 from flask_testing import TestCase
-from countries_api import app, get_country_name_rest  # Ajuste conforme a sua estrutura
+from countries_api import app, get_country_name_rest
 
 class TestCountriesAPI(TestCase):
     
@@ -17,7 +16,6 @@ class TestCountriesAPI(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['country_name'], 'United States')
 
-    #Erro
     def test_get_country_name_erro(self):
         response = self.client.get('/get_country_name?iso_code=ZZ')
         data = json.loads(response.data)
@@ -29,8 +27,11 @@ class TestCountriesAPI(TestCase):
         data = json.loads(response.data)
         self.assertEqual(response.status_code, 400)
         self.assertEqual(data['error'], 'ISO code not provided')
+        
+    def test_get_country_name_rest(self):
+        response = self.client.get('/get_country_name_res/br')
+        data = json.loads(response.data)
+        assert response.status_code == 200
+        assert data['common'] == 'Brazil'
 
-    def test_get_country_name_rest_success(self):
-        with self.mock_requests_get('https://restcountries.com/v3.1/alpha/br', json={"name": {"common": "Brazil"}}):
-            result = get_country_name_rest()
-            self.assertEqual(result, 'Brazil')
+
